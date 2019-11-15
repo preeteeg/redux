@@ -98,7 +98,12 @@ const REMOVE_GOAL = 'REMOVE_GOAL'
 const TOGGLE_GOAL='TOGGLE_GOAL'
 
 
-//ACTION CREATORS
+//ACTION CREATORS : 
+//action creators are they create actions and return different actions,
+//and  actions are are just object representation of different events that occurs in the application
+//that  change the state 
+//By making each one of thos representative as an object, what we can do is we can dd any
+//different properties to that object
 
 function addToDOAction(todo)
 {
@@ -151,7 +156,12 @@ function removeGoalAction(id)
     }
 }
 
+//2. Reducers are responsible for they take in the current state of that specific section of our store
+// so todos reducers is going to take in the todos portion of our state and take the specific  action which was dispatched
+//depending on whatever action that return the updated state
 //reducer function : return updated state
+//REDUCERS ARE PURE FUNCTIONS i.e cant modify the state
+//they need to return a new copy of the state
 function toDos(state = [], action)
 {
     // if (action.type === 'ADD_TODO')
@@ -231,6 +241,7 @@ function goals(state = [], action)
 
 
 //const store = createStore(app)
+//3. to create a store we call Redux.createStore to pass in the different reducers
 
 const store = Redux.createStore(Redux.combineReducers({
     toDos,
@@ -454,3 +465,4 @@ function createRemoveBtn(onClick)
     removeBtn.addEventListener('click', onClick)
     return removeBtn
 }
+
